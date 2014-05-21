@@ -21,7 +21,7 @@
 		    "email": "mah@everybody.org",
 		    "homepage": "http://hexmode.com",
 		    "role": "Core developer"
-		},
+		}
 	],
 	"require": {
 		"php": ">=5.3.0",
