@@ -1,4 +1,8 @@
 <?php
+if ( !defined( 'MEDIAWIKI' ) ) {
+	die( 'Not an entry point.' );
+}
+
 // **** FIXME ***** This is very ugly and needs to be removed
 if (isset($_POST['presentation_info']) ){
 
@@ -28,15 +32,15 @@ if (isset($_POST['presentation_info']) ){
  * @author Mark A. Hershberger, 2014
  * @license GNU General Public License 3.0 or later
  */
-$wgPresentationVersion = '0.5.0';
-$wgExtensionCredits['other'][] = array(
+$GLOBALS['wgPresentationVersion'] = '0.5.0';
+$GLOBALS['wgExtensionCredits']['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'Presentation',
 	'author' => array(
 		'[[mw:User:Kenyu73|Eric Fortin]]',
 		'[[mw:User:MarkAHershberger|Mark A. Hershberger]]'
 	),
-	'version'  => $wgPresentationVersion,
+	'version'  => $GLOBALS['wgPresentationVersion'],
 	'url' => 'https://www.mediawiki.org/wiki/Extension:Presentation',
 	'descriptionmsg' => 'presentation-desc',
 );
@@ -44,18 +48,18 @@ $wgExtensionCredits['other'][] = array(
 /* Setup */
 
 // Register files
-$wgAutoloadClasses['Presentation'] = __DIR__ . '/Presentation.body.php';
-$wgAutoloadClasses['PresentationHooks'] = __DIR__ . '/Presentation.hooks.php';
-$wgAutoloadClasses['SpecialPresentation'] = __DIR__ . '/specials/SpecialPresentation.php';
-$wgMessagesDirs['Presentation'] = __DIR__ . '/i18n';
-$wgExtensionMessagesFiles['PresentationAlias'] = __DIR__ . '/Presentation.i18n.alias.php';
+$GLOBALS['wgAutoloadClasses']['Presentation'] = __DIR__ . '/Presentation.body.php';
+$GLOBALS['wgAutoloadClasses']['PresentationHooks'] = __DIR__ . '/Presentation.hooks.php';
+$GLOBALS['wgAutoloadClasses']['SpecialPresentation'] = __DIR__ . '/specials/SpecialPresentation.php';
+$GLOBALS['wgMessagesDirs']['Presentation'] = __DIR__ . '/i18n';
+$GLOBALS['wgExtensionMessagesFiles']['PresentationAlias'] = __DIR__ . '/Presentation.i18n.alias.php';
 
 // Register special pages
-$wgSpecialPages['Presentation'] = 'SpecialPresentation';
-$wgSpecialPageGroups['Presentation'] = 'other';
+$GLOBALS['wgSpecialPages']['Presentation'] = 'SpecialPresentation';
+$GLOBALS['wgSpecialPageGroups']['Presentation'] = 'other';
 
 // Register modules
-$wgResourceModules['ext.Presentation.slide'] = array(
+$GLOBALS['wgResourceModules']['ext.Presentation.slide'] = array(
 	'scripts' => array(
 		'modules/ext.Presentation.slide.js',
 	),
@@ -71,6 +75,6 @@ $wgResourceModules['ext.Presentation.slide'] = array(
 	'remoteExtPath' => 'Presentation',
 );
 
-$wgExtensionFunctions[] = "PresentationHooks::initialize";
+$GLOBALS['wgExtensionFunctions'][] = "PresentationHooks::initialize";
 
 /* Configuration */
