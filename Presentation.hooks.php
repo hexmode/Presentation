@@ -17,8 +17,8 @@ class PresentationHooks {
 
 		$wgParser->disableCache();
                 // FIXME: Need to handle this better
-                if ( !$wgTitle ) {
-                    error_log( "FIXME: No tittle object." );
+                if ( !method_exists( $wgTitle, 'getText' ) ) {
+                    error_log( "FIXME: No title object." );
                     return "<br><font color=red><b><em>FIXME:</em> No title object.</b></font>\n<hr>";
                 }
 		$title = $wgTitle->getText(); //only returns the title, not the namespace
